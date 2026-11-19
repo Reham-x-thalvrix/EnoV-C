@@ -1,0 +1,34 @@
+{
+  "manifest_version": 3,
+  "name": "ENOV",
+  "version": "2.1.0",
+  "description": "Signal conditioning utility for captured audio streams.",
+  "author": "Thalvrix",
+  "permissions": ["scripting", "activeTab"],
+  "host_permissions": [
+    "https://discord.com/*",
+    "https://*.discord.com/*",
+    "https://ptb.discord.com/*",
+    "https://canary.discord.com/*"
+  ],
+  "content_scripts": [
+    {
+      "matches": [
+        "https://discord.com/*",
+        "https://*.discord.com/*",
+        "https://ptb.discord.com/*",
+        "https://canary.discord.com/*"
+      ],
+      "js": ["bridge.js"],
+      "run_at": "document_start",
+      "all_frames": true
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": ["enov-core.js", "enov-dsp.js"],
+      "matches": ["https://*.discord.com/*"]
+    }
+  ],
+  "icons": { "128": "icon.png" }
+}
